@@ -9,6 +9,16 @@ mailbox → emails:fetch (Artisan, every minute) → queued AnalyzeEmailJob
         → task / duplicate / reply / ignored     → acknowledgement email
 ```
 
+## Screenshots
+
+| Dashboard | Tasks list |
+| --- | --- |
+| ![Dashboard](public/images/dashboard.png) | ![Tasks list](public/images/tasks-list.png) |
+
+| Task detail |
+| --- |
+| ![Task detail](public/images/task-detail.png) |
+
 ## Stack
 
 - PHP 8.3+, Laravel 13, SQLite, database queue, log mailer
@@ -33,7 +43,7 @@ php artisan migrate --seed
 | `MAILBOX_DRIVER` | `fake` | `fake` = seeded sample inbox, `imap` = real mailbox |
 | `IMAP_HOST/PORT/USERNAME/PASSWORD` | – | used when `MAILBOX_DRIVER=imap` |
 | `AI_PROVIDER` | `fake` | `fake` = offline rule-based analyzer, `openrouter` = LLM |
-| `AI_MODEL` | `meta-llama/llama-3.1-8b-instruct:free` | model served via OpenRouter |
+| `AI_MODEL` | `google/gemma-4-31b-it:free` | model served via OpenRouter |
 | `OPENROUTER_API_KEY` | – | key from https://openrouter.ai/keys |
 | `AI_CONFIDENCE_THRESHOLD` | `0.7` | below this, new tasks are created as `Needs Review` |
 
